@@ -1,1 +1,0 @@
-t = int(input('Nhap vao tong so giay: '))
