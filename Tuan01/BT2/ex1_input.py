@@ -1,0 +1,1 @@
+x = float(input('Moi ban nhap vao gia tri cua bien so x: '))
