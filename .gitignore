@@ -1,0 +1,22 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+
+# ===== Conda =====
+env/
+venv/
+.conda/
+*.conda
+
+# ===== Jupyter =====
+.ipynb_checkpoints/
+
+# ===== IDE =====
+.vscode/
+
+# ===== OS =====
+Thumbs.db
+.DS_Store
+
+# ===== Logs =====
+*.log
