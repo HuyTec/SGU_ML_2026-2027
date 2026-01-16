@@ -2,7 +2,9 @@
 python -m pip show numpy
 ------------------------------------------------
 # Thiet lap ban dau
+
 git config --global user.name "Ten Cua Ban"
+
 git config --global user.email "email@example.com"
 ------------------------------------------------
 #Kiem tra trang thái
