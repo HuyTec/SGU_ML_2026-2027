@@ -9,38 +9,55 @@
 import numpy as np
 import os
 
-FI = "puzzle.inp"
+PUZZLE = "D:\ai_pratice_prj\sgu26_csttnt\Tuan03\B3\puzzle.inp"
 class State:
     
-    def __init__(self, key, parent = None, cost = 0):
-        self.key = [[v for v in row] for row in key]
+    def __init__(self, state, parent = None):
+        self.state = tuple(tuple(row) for row in state)
         self.parent = parent
-        self.cost = cost
         pass
-    def tokey(self):
-        return tuple([tuple([v for v in row])for row in self.key])
+
+    def to_state(self):
+        return self.state
+    
+    def __eq__(self, other):
+        if not isinstance(other, State): return False
+        return self.state == other.state
+    
+    def __repr__(self):
+        return f'{self.state}, parent: {self.parent}'
+        
     pass
-def solve(debug=None):
-    with open(FI, "rt") as file:
+
+def readfile(debug=None):
+    with open(PUZZLE, "rt") as file:
         content = file.readlines()
 
-    # đọc 3 dòng đầu làm trạng thái start
-    start = []
-    for row in content[0:3]:
-        start.append([v.replace('\n','') for v in row.split(' ')])
+    start = tuple(tuple(map(int, line.split())) for line in content[0:3])
+    goal = tuple(tuple(map(int, line.split())) for line in content[3:6])
 
-    goal = []
-    for row in content[3:6]:
-        start.append([v.replace('\n','') for v in row.split(' ')])
+    if debug is not None: print("Đọc file thành công!")
 
-    start = np.array(start)
-    goal = np.array(goal)
+    return State(start), State(goal)
 
-    print(State(start))
+def pos0(state):
+    s = state.state
+    for i, row in enumerate(s):
+        for j, x in enumerate(row):
+            if x == 0: return i, j
 
-    if debug is not None:
-        debug.update(locals())
+def generator_state(state, dx, dy):
+    s = state.state
+    cell_list = np.array(s)
+    print(cell_list)
+
+#def solve_BFS(start, goal):
+
+
+
+
 
 if __name__ == "__main__":
-    solve(debug=globals())
+    start, goal = readfile(debug=globals())
+    generator_state()
 

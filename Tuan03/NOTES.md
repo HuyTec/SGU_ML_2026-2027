@@ -53,3 +53,34 @@ def hierarchy_pos(G, root, width=1., vert_gap=0.2, vert_loc=1, xcenter=0.5):
 ### Uniform Cost Search = Dijkstra (thuật toán tối ưu đường đi dựa trên trọng số)
 ### Greedy Best First Search
 ### A* , IDA*
+
+```
+#
+import matplotlib.pyplot as plt
+
+n = len(state)
+
+plt.figure(figsize=(4,4))
+
+# Vẽ grid
+for i in range(n+1):
+    plt.plot([0,n], [i,i])
+    plt.plot([i,i], [0,n])
+
+# Vẽ số vào giữa ô
+for i in range(n):
+    for j in range(n):
+        val = state[i][j]
+        if val != 0:  # không vẽ ô trống
+            plt.text(
+                j + 0.5, n - i - 0.5,  # tọa độ giữa ô
+                str(val),
+                ha='center', va='center',
+                fontsize=16
+            )
+
+plt.xlim(0,n)
+plt.ylim(0,n)
+plt.axis("off")
+plt.show()
+```
