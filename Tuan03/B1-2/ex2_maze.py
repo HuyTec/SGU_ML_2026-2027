@@ -1,7 +1,8 @@
 import os
 import numpy as np
 
-MAZE = "maze.inp"
+base = os.path.dirname(os.path.abspath(__file__))
+MAZE = os.path.join(base, "maze.inp")
 
 class Wall:
     def __init__(self, x1=0, y1=0, x2=0, y2=0):
@@ -44,7 +45,10 @@ def find_path_BFS(maze, wall_list, start_row, start_col, goal_row, goal_col):
     wall_set = set(wall_list)
     m = len(maze)
     n = len(maze[0])
-    if (start_row < 1 or start_row > m or start_col < 1 or start_col > n or goal_row < 1 or goal_row > m or goal_col < 1 or goal_col > n):
+    if (start_row < 1 or start_row > m or
+           start_col < 1 or start_col > n or
+               goal_row < 1 or goal_row > m or
+                   goal_col < 1 or goal_col > n):
         return None
     
     actions = [[1,0],[-1,0],[0,1],[0,-1]]
@@ -77,7 +81,10 @@ def find_path_DFS(maze, wall_list, start_row, start_col, goal_row, goal_col):
     wall_set = set(wall_list) ## đưa về set để tránh trùng lặp
     m = len(maze)
     n = len(maze[0])
-    if (start_row < 1 or start_row > m or start_col < 1 or start_col > n or goal_row < 1 or goal_row > m or goal_col < 1 or goal_row > n):
+    if (start_row < 1 or start_row > m or
+           start_col < 1 or start_col > n or
+               goal_row < 1 or goal_row > m or
+                   goal_col < 1 or goal_row > n):
         return None
     
     actions = [[1,0],[-1,0],[0,1],[0,-1]] ## các hướng đi
@@ -106,7 +113,7 @@ def find_path_DFS(maze, wall_list, start_row, start_col, goal_row, goal_col):
                         p_open.append((x,y))
     return parent
 
-def path(parent, start_row, start_col, goal_row, goal_col):
+def path(parent, goal_row, goal_col):
     result = []
     goal = (goal_row,goal_col)
     while goal is not None:
