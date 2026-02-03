@@ -96,21 +96,15 @@ def N_Queens_H(N, verbose = True):
 
     for step in range(1, maxStep):
         h = cnt_conflicts_pairs(pos)
-
         if verbose: print(f'\nStep {step}, conflict h = {h}')
-
         parseBoard(pos)
-
         if h == 0:
             print(f'Found sulution!')
             return pos
-
         row = select_row(pos)
         if row is None: return None
-
         min_conf = 10**9
         best_col = []
-
         for col in range(0,N):
             conf = conflicts_counter(row, col, pos)
             if conf < min_conf:
