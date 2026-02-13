@@ -107,6 +107,8 @@ def find_path_UCS(maze, wall_list, start_row, start_col, goal_row, goal_col):
                         open_heap.push((next_cost,(x,y)))
     return parent
 
+def manhattan(row, col, goal_row, goal_col):
+    return abs(row-goal_row)+abs(col-goal_col)
 
 def find_path_AStar(maze, wall_list, start_row, start_col, goal_row, goal_col):
     wall_set = set(wall_list) ## đưa về set để tránh trùng lặp
@@ -120,19 +122,21 @@ def find_path_AStar(maze, wall_list, start_row, start_col, goal_row, goal_col):
     g = {}
     f = {}
     p_closed = []
-    open_heap = MinHeap()
+    p_open = MinHeap()
 
+    h = {}
     start_point = (start_row,start_col)
     parent[start_point] = None
     g[start_point] = 0
-    f[start_point] = g[start_point] + abs(start_row-goal_row)+abs(start_col-goal_col)
-    open_heap.push((f[start_point],start_point))
+    f[start_point] = g[start_point] + manhattan(start_row, start_col, goal_row, goal_col)
+    h[start_point] = manhattan(start_row, start_col, goal_row, goal_col)
+    p_open.push((f[start_point],start_point))
     ## dùng khoảng cách manhattan cho h(n)
 
-    while open_heap.empty() == False:
-        _, (i, j) = open_heap.pop()
+    while p_open.empty() == False:
+        _, (i, j) = p_open.pop()
         if (i, j) == (goal_row,goal_col):
-            break
+            return parent, f, g, h
         if (i, j) in p_closed:
             continue
         p_closed.append((i,j))
@@ -143,18 +147,18 @@ def find_path_AStar(maze, wall_list, start_row, start_col, goal_row, goal_col):
                     next_cost = g[(i,j)] + 1
                     if (x,y) not in g or next_cost < g[(x,y)]:
                         g[(x,y)] = next_cost
-                        f[(x,y)] = g[(x,y)] + abs(x-goal_row)+abs(y-goal_col)
+                        f[(x,y)] = g[(x,y)] + manhattan(x,y,goal_row, goal_col)
+                        h[(x,y)] = manhattan(x,y,goal_row, goal_col)
                         parent[(x,y)] = (i,j)
-                        open_heap.push((f[(x,y)],(x,y)))
-    return parent
+                        p_open.push((f[(x,y)],(x,y)))
+    return None, None, None, None
 
-def path(parent, start_row, start_col, goal_row, goal_col):
+def path(parent, goal_row, goal_col):
     result = []
     goal = (goal_row,goal_col)
     while goal is not None:
         result.append(goal)
         goal = parent[goal]
-
     return result
 
 

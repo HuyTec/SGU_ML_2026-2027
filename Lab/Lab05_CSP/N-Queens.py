@@ -116,6 +116,13 @@ def N_Queens_H(N, verbose = True):
         pos[row] = rd.choice(best_col) 
     return None
 
+#==================== Giải thuật luyện kim ==============================
+
+
+
+
+#==================== Giải thuật tiến hóa ==============================
+
     
 if __name__ == "__main__":
     n = 8
