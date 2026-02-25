@@ -32,11 +32,11 @@ def sudoku_board(board, hide=False, based0=False):
         for j in range(9):
             val = board[i][j]
             if hide and val == -1:
-                print(" .", end=" ")
+                print(".", end=" ")
             else:
                 if not based0:
                     val += 1
-                print(f"{val:2}", end=" ")
+                print(f"{val}", end=" ")
         print()
     print()
 
