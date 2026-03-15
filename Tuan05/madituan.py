@@ -39,11 +39,9 @@ def sapxep_luachon(n, x, y, board):
     return candicates
     
 
-"""-------------------------------------------------------------------------"""
-
 def madituan_bactracking(n, x0, y0, limit = (False, 1000000)): ## x0, y0 base 1
     if n % 2 == 1 or n < 6: return None
-# n=3, n=4, n=5 ko có lời giải, không có chu trình Hamilton
+    # n=3, n=4, n=5 ko có lời giải
     x0 -= 1
     y0 -= 1
 

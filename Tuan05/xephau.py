@@ -59,8 +59,8 @@ def xephau_bactracking(n, draw_tree = False, queens = False):
     tree = nx.DiGraph()
 
     def backtracking(n, col):
-        state_parent = board_to_string(board(n,pos), queens)
-        tree.add_node(state_parent, depth =len(pos))
+        # #state_parent = board_to_string(board(n,pos), queens)
+        # tree.add_node(state_parent, depth =len(pos))
 
         if col == n:
             result.append(pos.copy())
@@ -69,18 +69,14 @@ def xephau_bactracking(n, draw_tree = False, queens = False):
             for row in range(0, n):
                 if check_valid(row, col, pos): 
                     pos.append(row)
-                    
-                    state_child = board_to_string(board(n,pos), queens)
-                    tree.add_node(state_child, depth = len(pos))
-                    tree.add_edge(state_parent, state_child)
-
+                    # state_child = board_to_string(board(n,pos), queens)
+                    # tree.add_node(state_child, depth = len(pos))
+                    # tree.add_edge(state_parent, state_child)
                     backtracking(n, col + 1)
                     pos.pop()
             pass
         pass
-
     backtracking(n=n, col = 0)
-
     if draw_tree:
         plt.figure(figsize=(10,5))
         layout = nx.multipartite_layout(tree, subset_key="depth")

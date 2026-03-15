@@ -26,13 +26,13 @@ def in_matran(matrix):
         for col in row:
             print(f'{col}', end=" ")
         print()
- 
+"""--------------------------------------------------------------------------"""
 def hople(u, c, graph, color): ## phần quan trọng nhất
     for i in range(0, u):
         if (graph[u][i] == 1 and c == color[i]):
             return False
     return True
-"""--------------------------------------------------------------------------"""
+
 def tomau_backtracking(n, graph, limit_color = None, all_solution = False):
     result = []
     val = n if limit_color is None else limit_color
