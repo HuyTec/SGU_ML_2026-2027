@@ -1,4 +1,4 @@
-# sgu26_csttnt
+# sgu_ML_2026-2027
 ## Thông tin sinh viên:
 + Họ tên: Trần Nhựt Huy
 + MSSV: 3124411112
