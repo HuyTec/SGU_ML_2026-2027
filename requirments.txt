@@ -1,0 +1,21 @@
+# Jupyter
+jupyter
+ipykernel
+
+# Scientific computing
+numpy
+pandas
+scipy
+
+# Visualization
+matplotlib
+seaborn
+
+# Machine Learning
+scikit-learn
+
+# Image processing
+Pillow
+
+# Utilities
+tqdm

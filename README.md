@@ -10,4 +10,20 @@
 ## Mục tiêu:
 + Có nền tảng vững chắc để học sâu
 + Nâng cao trình độ, khả năng giải quyết vấn đề
+## Cài đặt môi trường 
+```
+python -m venv .venv 
+```
+## Cài đặt các thư viện
+```
+pip install -r requirements.txt
+```
+## Test cấu hình thư viện
+```
+python test.py
+```
+## Khóa cấu hình hiện tại
+```
+pip freeze > requirements-lock.txt
+```
 
